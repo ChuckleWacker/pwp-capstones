@@ -2,23 +2,21 @@
 # CLASSES:
 class User:  # Methods Tested
     def __init__(self, name, email):
-        self.name = name  # String
-        self.email = email  # String
-        self.books = {}  # Instance variable
+        self.name = name
+        self.email = email
+        self.books = {}
 
     def get_email(self):  # Returns email associated with the user
         return self.email
 
     def change_email(self, address):  # Takes in a new email and changes the email associated with the user
         self.email = address
-        print("This user's email has been updated")  # Should also print a message saying the users email was updated
+        print("This user's email has been updated")
 
     def read_book(self, book, rating=None):
         self.books[book] = rating
 
-    def get_average_rating(self):
-        # Iterates through all of the values in self.books, which are the ratings, and calculates the average rating.
-        # It should return this average.
+    def get_average_rating(self):  # Calculates average rating
         total_ratings = 0
         for rating in self.books.values():
             if rating:
@@ -34,8 +32,8 @@ class User:  # Methods Tested
 
 class Book:
     def __init__(self, title, isbn):
-        self.title = title  # String
-        self.isbn = isbn  # Number
+        self.title = title
+        self.isbn = isbn
         self.ratings = []  # Instance variable as empty list
 
     def __repr__(self):
@@ -82,8 +80,8 @@ class Fiction(Book):
 class Non_Fiction(Book):
     def __init__(self, title, subject, level, isbn):
         super().__init__(title, isbn)
-        self.subject = subject  # String
-        self.level = level  # String
+        self.subject = subject
+        self.level = level
 
     def get_subject(self):
         return self.subject
@@ -107,16 +105,13 @@ class TomeRater:
         return self.title == other_object.title
 
     def create_book(self, title, isbn):
-        book = Book(title, isbn)
-        return book
+        return Book(title, isbn)
 
     def create_novel(self, title, author, isbn):
-        fiction = Fiction(title, author, isbn)
-        return fiction
+        return Fiction(title, author, isbn)
 
     def create_non_fiction(self, title, subject, level, isbn):
-        non_fiction = Non_Fiction(title, subject, level, isbn)
-        return non_fiction
+        return Non_Fiction(title, subject, level, isbn)
 
     def add_book_to_user(self, book, email, rating=None):
         user = self.users.get(email, None)
